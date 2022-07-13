@@ -67,24 +67,24 @@
 		<div id="w3ls_form" class="signin-form">
 			<!-- Sign In Form -->
 			{{-- <form id="signin" action='/login-user' method="post"> --}}
-				<form id="signin" action="{{ route('login.custom') }}" method="POST">
+				<form id="signin" action="{{route('custom-login')}}" method="POST">
 				@if(Session::has('success'))
                 <div class ="alert alert-success">{{Session::get('success')}}</div>
                 @endif
 
-                @if(Session::has('Fail'))
-                <div class ="alert alert-danger">{{Session::get('Fail')}}</div>
+                @if(Session::has('fail'))
+                <div class ="alert alert-danger">{{Session::get('fail')}}</div>
                 @endif 
 
 				@csrf
                 <div class="ribbon"><a href="#" id="flipToRecover" class="flipLink" title="Click Here to SignUp">Sign Up</a></div>
 				<h2>Sign In Form</h2>
 				<p>Email </p>
-				<input type="text" name="Email" placeholder="" required=""/>
+				<input type="text" name="Email" placeholder="" value="{{old('Email')}}"/>
 				<span class="text-danger">@error('Email') {{$message}} @enderror</span>
                 
 				<p>Password</p>
-				<input type="password" name="Password" placeholder="" required="" value = "{{old('email')}}"/>
+				<input type="password" name="Password" placeholder=""  value = ""/>
 				<span class="text-danger">@error('Password') {{$message}} @enderror</span>
                 	 
 				<input type="checkbox" id="brand" value="">
@@ -128,19 +128,19 @@
 				<h3>Sign Up Form</h3>
 
 				<p>Full_Name </p>
-                <input type="text" name="Full_Name" placeholder="" required=""/>
+                <input type="text" name="Full_Name" placeholder="" />
                 <span class="text-danger">@error('Full_Name') {{$message}} @enderror</span>
                 
                 <p>Your Email </p>
-                <input type="text" name="Email" placeholder="" required=""/>
+                <input type="text" name="Email" placeholder="" />
 				<span class="text-danger">@error('Email') {{$message}} @enderror</span>
                 
                 <p>Password</p>
-				<input type="password" name="Password" placeholder="" required=""/>
+				<input type="password" name="Password" placeholder="" />
 				<span class= "text-danger">@error('Password') {{$message}} @enderror</span>
                 
                 <p>Age</p>
-				<input type="number" name="Age" placeholder="" required=""/>
+				<input type="number" name="Age" placeholder=""/>
                 <span class= "text-danger">@error('Age') {{$message}} @enderror</span>
 				<p>Location</p>
 				<select id="continent" name="Location">
